@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ</title>
+
+    <script src="libs/js/angular.min.js"></script>
+    <script src="libs/js/angular-route.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+    <script src="controllers/TrangChuController.js"></script>
+    <script src="controllers/detailController.js"></script>
+    <script src="controllers/bookingController.js"></script>
+    <script src="controllers/contactController.js"></script>
+    <script src="controllers/listController.js"></script>
+    <link rel="stylesheet" href="../libs/css/style.css">
+</head>
+
+<body>
+    <div ng-app="app-router">
+        <header class="row position-relative">
+            <nav class="navbar  navbar-expand-lg navbar-light">
+                <div class="container-fluid d-flex">
+                    <div>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse row" id="navbarText">
+                        <div class="col-md-3">
+                            <ul class="navbar-nav float-start me-auto  mb-2 mb-lg-0">
+                                <li class="nav-item h1">
+                                    <a class="nav-link active text-light" aria-current="page" href="#"><i
+                                            class="fa-solid fa-house text-warning"></i>Hermes Hotel</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-8 text-center m-auto">
+                            <div class="container-fluid">
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                                    <ul class="navbar-nav ">
+                                        <li class="nav-item">
+                                            <a class="nav-link active text-light hover:text-danger-emphasis"
+                                                aria-current="page" href="#!/">Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link active text-light hover:text-danger-emphasis" href=""><i
+                                                    class="fa-solid fa-download"></i></i> Tải ứng dụng <i><i
+                                                        class="fa-solid fa-chevron-down"></i></i></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link active text-light hover:text-danger-emphasis" href=""><i
+                                                    class="fa-solid fa-handshake"></i> Hợp tác với chúng tôi</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link active text-light hover:text-danger-emphasis"
+                                                href="#!/listroom"><i class="fa-solid fa-clipboard-check"></i>List
+                                                Room</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link active text-light hover:text-danger-emphasis"
+                                                href="#!/booking">Booking</a>
+                                        </li>
+                                        <li class="nav-">
+                                            <a href="">
+                                                <div id="wrapper">
+                                                    <div class="cart-tab visible">
+                                                        <a href="#" title="View your shopping cart" class="cart-link">
+                                                            <span class="amount">$22.00</span>
+                                                            <span class="contents">2 items</span>
+                                                        </a>
+                                                        <div class="cart">
+                                                            <h2>Cart</h2>
+                                                            <div class="cart-items">
+                                                                <ul>
+                                                                    <li class="clearfix">
+                                                                        <img src="../libs/images/111.jpg"
+                                                                            class="productimg">
+                                                                        <h4>Dark Hoodie</h4>
+                                                                        <span class="item-price">$11.00</span>
+                                                                        <span class="quantity">Quantity: 1</span>
+                                                                    </li>
+                                                                    <li class="clearfix">
+                                                                        <img src="../libs/images/333.jpg"
+                                                                            class="productimg">
+                                                                        <h4>SpongeBob Shoes</h4>
+                                                                        <span class="item-price">$11.00</span>
+                                                                        <span class="quantity">Quantity: 1</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </div><!-- @end .cart-items -->
+                                                            <a href="#" class="checkout">Go To Checkout →</a>
+                                                        </div><!-- @end .cart -->
+                                                    </div><!-- @end .cart-tab -->
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link active text-light hover:text-danger-emphasis"
+                                                href="#!/contact">Contact</a>
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle active text-light hover:text-danger-emphasis"
+                                                href="#" id="navbarDropdownMenuLink" role="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                Service
+                                            </a>
+                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li class="nav-item dropdown-item">
+                                                    <a class="nav-link" href="#"><i
+                                                            class="fa-solid fa-right-to-bracket"></i>Đăng Nhập</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-1 float-end">
+                            <ul class="navbar-nav float-end">
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="#"><i
+                                            class="fa-brands fa-facebook bg-warning rounded"></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#"><i
+                                            class="fa-brands fa-twitter bg-warning rounded"></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#"><i
+                                            class="fa-brands fa-google bg-warning rounded"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-9">
+
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="navbar-nav ">
+
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div class="row mt-5 text-center">
+                <h1 class="h1 text-warning ">WELCOME</h1>
+                <h1 class="h3 text-center text-light blockquote">DỊCH VỤ TUYỆT VỜI VỚI GIÁ TỐT NHẤT CHÀO ĐÓN THƯ GIÃN VÀ
+                    TRẢI NGHIỆM ĐIỀU MỚI MẺ
+                </h1>
+            </div>
+            <div style="width: 1000px;" class="container-fluid banner-bottom text-center    ">
+                <div class="droop-down bg-warning p-3 mx-6 rounded row">
+                    <div class="col-md-1">
+                        <i class="fa-sharp fa-solid fa-location-dot"></i>
+                    </div>
+                    <div class="droop col-md-6">
+                        <div class="">
+                            <select class="form-control">
+                                <option class="form-control" value=""> <i
+                                        class="fa-sharp fa-solid fa-location-dot"></i>Lựa Chọn Phòng</option>
+                                <option value="">PHÒNG ĐƠN ĐÔI</option>
+                                <option value="">PHÒNG TÌNH YÊU</option>
+                                <option value="">PHÒNG GIA ĐÌNH</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="radio-btns col-md-3">
+                        <div class="pt-2">
+                            <div class="check_box">
+                                <div class="radio "><i class="fa-solid fa-calendar-days"></i> <label><input type="radio"
+                                            name="radio" class="border bg-danger-subtle" checked="">NGÀY </label><i
+                                        class="fa-sharp fa-solid fa-clock"></i>
+                                    <input class="" type="radio" name="radio" checked="">GIỜ</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <form action="">
+                            <button type="submit" class="btn btn-danger px-5 py-2" value="search">Search</button>
+                        </form>
+                    </div>
+                </div>
+        </header>
+        <main>
+            <div ng-view></div>
+        </main>
+        <footer class="row blockquote text-center bg-body-secondary p-5 ">
+            <div class="col-md-3">
+                <h1 class="text-warning h4">Cơ Sở</h1>
+            </div>
+            <div class="col-md-3">
+                <h1 class="text-warning h4">Liên Lạc</h1>
+            </div>
+            <div class="col-md-3">
+                <h1 class="text-warning h4">Sản Phẩm</h1>
+            </div>
+            <div class="col-md-3">
+                <h1 class="text-warning h4">Khác</h1>
+            </div>
+            <div class="col-md-3">
+                <h1 class=" h5">Home <br>
+                    About <br>
+                    Services <br>
+                    Booking <br>
+                    Contact</h1>
+            </div>
+            <div class="col-md-3">
+                <h1 class=" h5">Cách đặt chỗ
+                    </br>
+                    Liên hệ chúng tôi
+                    </br>
+                    Trợ giúp </br>
+                    Tuyển dụng
+                    </br>
+                    Về chúng tôi</h1>
+            </div>
+            <div class="col-md-3">
+                <i class="fa-brands fa-twitter"></i> twitter <br>
+                <i class="fa-brands fa-youtube"></i> youtube</br>
+                <i class="fa-brands fa-facebook"></i> twitter</br>
+                <i class="fa-brands fa-google"></i> twitter</h1>
+            </div>
+            <div class="col-md-3">
+                <img width="200"
+                    src="../libs/images/logo-bankpngffffff-1561427849156344392040-crop-1561427856887663294599.webp"
+                    alt="">
+            </div>
+        </footer>
+    </div>
+</body>
+<script>
+    //Điều Hướng Router
+    angular.module('app-router', ['ngRoute']).config(($routeProvider) => {
+        $routeProvider.when("/", {
+            templateUrl: 'views/home.html',// Đường Dẫn Đến view
+            controller: TrangChuController, // Đường Dẫn Đến Controller
+        })
+            .when("/booking", {
+                templateUrl: 'views/booking.html',// Đường Dẫn Đến view
+                controller: bookingController, // Đường Dẫn Đến Controller
+            })
+            .when("/detail/:userId", {
+                templateUrl: 'views/detail.html',// Đường Dẫn Đến view
+                controller: detailController, // Đường Dẫn Đến Controller
+            })
+            .when("/contact", {
+                templateUrl: 'views/lienhe.html',// Đường Dẫn Đến view
+                controller: contactController, // Đường Dẫn Đến Controller
+            })
+            .when("/listroom", {
+                templateUrl: 'views/listroom.html',// Đường Dẫn Đến view
+                controller: listController, // Đường Dẫn Đến Controller
+            })
+            ;
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</html>

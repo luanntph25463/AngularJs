@@ -1,0 +1,2 @@
+window.contactController = function($scope){
+}
