@@ -51,7 +51,7 @@
                     <h3 class="bg-dark-subtle h4 text-center text-danger-emphasis p-1"> Xác Nhận Và Thanh Toán</h3>
                     <hr>
 
-                    <div class="row" ng-repeat="i in card">
+                    <div class="row" ng-repeat="i in valuedetail">
                         <div class="col-md-3">
                             <button ng-click="onDelete1(i.id)">X</button>
 
@@ -208,7 +208,7 @@
                         <h2>Cart</h2>
                         <div class="cart-items">
                             <ul>
-                                <li class="clearfix text-center text-dark" ng-repeat="i in card">
+                                <li class="clearfix text-center text-dark" ng-repeat="i in valuedetail">
                                     <img width="100px" src="../libs/images/{{i.image}}" class="productimg">
                                     <h4>{{i.name}}</h4>
                                     <span class="item-price">$ {{i.price}}</span>

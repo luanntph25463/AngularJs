@@ -9,14 +9,22 @@ window.contactController = function ($scope, $location, $cookies, $routeParams, 
         // dữ liệu được đón về thành công sẻ nằm ở biến response
         $scope.bookings = response.data
     })
+    if ($cookies.getObject('user')) {
+        $scope.user = $cookies.getObject('user');
     $http.get(apiURL1).then(function (res) {
         // dữ liệu được đón về thành công sẻ nằm ở biến response
         $scope.card = res.data
+        $scope.valuedetail = []
         $scope.card.price = 0
         for(var i= 0;i<$scope.card.length;i++){
-            $scope.card.price += $scope.card[i].price
+            if($scope.user.id == $scope.card[i].idnguoimua){
+                $scope.valuedetail.push({...res.data[i]})
+                $scope.card.price += $scope.card[i].price
+
+            }
         }
     })
+}
     $scope.onEdit = function (editId) {
         $scope.editId = editId;
         // Tạo Ra 1 Đối Tượng Sửa

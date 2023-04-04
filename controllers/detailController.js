@@ -40,6 +40,23 @@ window.detailController = function ($scope, $routeParams,$location, $http,$cooki
                         $scope.alert = "Thêm Thành Công Vào Danh Sách";    
                 }
             }
+            if ($cookies.getObject('user')) {
+                $scope.user = $cookies.getObject('user');
+            $http.get(apiURL2).then(function (res) {
+                // dữ liệu được đón về thành công sẻ nằm ở biến response
+                $scope.card = res.data
+                $scope.valuedetail1 = []
+                $scope.card.price = 0
+                for(var i= 0;i<$scope.card.length;i++){
+                    if($scope.user.id == $scope.card[i].idnguoimua){
+                        $scope.valuedetail1.push({...res.data[i]})
+                        $scope.card.price += $scope.card[i].price
+        
+                    }
+                }
+                console.log($scope.card.price)
+            })
+        }
             $scope.booknow = function () {
                 $scope.kiemTraDuLieu = {}
                 // kiểm Tra nếu họ Tên trống
@@ -57,7 +74,7 @@ window.detailController = function ($scope, $routeParams,$location, $http,$cooki
                         ).then(
                             function (response) {
                                 if (response.status == 201) {
-                                    $location.path("/booking")
+                                    $location.path(`booking`)
                                 }
                             }
                         )
@@ -71,16 +88,7 @@ window.detailController = function ($scope, $routeParams,$location, $http,$cooki
                 $scope.room = { ...res.data };
             },
         );
-   
-        $http.get(apiURL2).then(function (res) {
-            // dữ liệu được đón về thành công sẻ nằm ở biến response
-            $scope.card = res.data
-            $scope.card.price = 0
-            for(var i= 0;i<$scope.card.length;i++){
-                $scope.card.price += $scope.card[i].price
-            }
-    
-        })
+
         $http.get(`${apiURL1}`).then(
             function (response) {
             // dữ liệu được đón về thành công sẻ nằm ở biến response

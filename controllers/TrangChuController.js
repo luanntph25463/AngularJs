@@ -9,22 +9,26 @@ window.TrangChuController = function ($scope,$cookies,$location, $routeParams, $
         $scope.user = $cookies.getObject('user');
         $scope.showlogin = true
         console.log($scope.user)
-
+        $http.get(apiURL1).then(function (res) {
+            // dữ liệu được đón về thành công sẻ nằm ở biến response
+            $scope.card = res.data
+            $scope.valuedetail1 = []
+            $scope.card.price = 0
+            for(var i= 0;i<$scope.card.length;i++){
+                if($scope.user.id == $scope.card[i].idnguoimua){
+                    $scope.valuedetail1.push({...res.data[i]})
+                    $scope.card.price += $scope.card[i].price
+    
+                }
+            }
+            console.log($scope.card.price)
+        })
     }else{
          console.log($scope.user)
     }
     $scope.logout = function (){
         $cookies.removeOBject("user")
     }
-    $http.get(apiURL1).then(function (res) {
-        // dữ liệu được đón về thành công sẻ nằm ở biến response
-        $scope.card = res.data
-        $scope.card.price = 0
-        for(var i= 0;i<$scope.card.length;i++){
-            $scope.card.price += $scope.card[i].price
-        }
-
-    })
     $http.get(apiURL2).then(
         function (response) {
         // dữ liệu được đón về thành công sẻ nằm ở biến response

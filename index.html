@@ -78,7 +78,7 @@
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link active text-light hover:text-danger-emphasis"
-                                                href="#!/booking">Booking</a>
+                                                href="#!/booking/{{user.id}}">Booking</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link active text-light hover:text-danger-emphasis"
@@ -264,6 +264,10 @@
                 controller: findController, // Đường Dẫn Đến Controller
             })
             .when("/booking/:id", {
+                templateUrl: 'views/booking.html',// Đường Dẫn Đến view
+                controller: bookingController, // Đường Dẫn Đến Controller
+            })
+            .when("/booking/:idcard?:id", {
                 templateUrl: 'views/booking.html',// Đường Dẫn Đến view
                 controller: bookingController, // Đường Dẫn Đến Controller
             })

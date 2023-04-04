@@ -115,48 +115,33 @@
       "totalamount": 32000,
       "iduser": 1,
       "id": 1
-    },
-    {
-      "name": "luaans",
-      "email": "luanntph254632@gmail.com",
-      "image": "222.jpg",
-      "password": "123",
-      "id": 2
-    },
-    {
+    },{
       "name": "s",
-      "quantity": "7",
-      "check_in": "4/4/2023",
-      "check_out": "7/4/2023",
+      "quantity": "2",
+      "check_in": "6/4/2023",
+      "check_out": "1/4/2023",
       "phone": "0334590019",
-      "email": "s@gmail.com",
+      "email": "2s@gmail.com",
       "gender": "1",
       "payment": "1",
       "status": 1,
       "message": "s",
-      "cccd": "033459001911",
-      "totalamount": 40000,
-      "iduser": 3,
-      "id": 3
-    },
-    {
-      "name": "luan",
-      "quantity": "2",
-      "check_in": "5/4/2023",
-      "check_out": "13/4/2023",
-      "phone": "0334590019",
-      "email": "luan@gmail.com",
-      "gender": "2",
-      "payment": "2",
-      "status": 1,
-      "message": "dq",
-      "cccd": "033459001911",
-      "totalamount": 60000,
+      "cccd": "103345900191",
+      "totalamount": 32000,
       "iduser": 2,
-      "id": 4
+      "id": 1
     }
   ],
-  "card": [],
+  "card": [
+    {
+      "image": "111.jpg",
+      "price": 20000,
+      "name": "Phòng Đơn Đôi",
+      "des": "Phòng thoáng mát sạch sẽ,Nằm ở vị trí trung tâm tại Thành Phố Lệ Giang của Lệ Giang, chỗ nghỉ này đặt quý khách ở gần các điểm thu hút",
+      "idnguoimua": 2,
+      "id": 1
+    }
+  ],
   "user": [
     {
       "name": "luaan",

@@ -7,10 +7,16 @@ window.infoController = function ($scope,$location,$cookies, $routeParams, $http
         let apiURL1 = "http://localhost:3000/user";
     
         // getData đón dữ liệu từ api về
-            $http.get(apiURL).then(function (response) {
-                // dữ liệu được đón về thành công sẻ nằm ở biến response
-                $scope.bookings = response.data
-            })
+        $http.get(apiURL).then(function (res) {
+            // dữ liệu được đón về thành công sẻ nằm ở biến response
+            $scope.bookings = res.data
+            $scope.valuedetail = []
+            for (var i = 0; i < $scope.bookings.length; i++) {
+                if ($scope.user.id == $scope.bookings[i].iduser) {
+                    $scope.valuedetail.push({ ...res.data[i] })
+                }
+            }
+        })
             $scope.iduser = $routeParams.id
             if ($scope.iduser) {
                 $scope.editId = $routeParams.id
