@@ -1,0 +1,214 @@
+{
+  "rooms": [
+    {
+      "id": 1,
+      "image": "111.jpg",
+      "name": "Phòng Đơn Đôi",
+      "price": 20000,
+      "address": "thường tín thành phố hà nội",
+      "des": "Phòng thoáng mát sạch sẽ,Nằm ở vị trí trung tâm tại Thành Phố Lệ Giang của Lệ Giang, chỗ nghỉ này đặt quý khách ở gần các điểm thu hút",
+      "aceage": 20,
+      "tang": 2,
+      "view": 28,
+      "like": 2,
+      "status": 1,
+      "star": 5,
+      "idcate": 1,
+      "khoangcach": 1
+    },
+    {
+      "id": 5,
+      "image": "111.jpg",
+      "name": "Phòng Đơn Đôi",
+      "price": 20000,
+      "address": "thường tín thành phố hà nội",
+      "des": "Phòng thoáng mát sạch sẽ,Nằm ở vị trí trung tâm tại Thành Phố Lệ Giang của Lệ Giang, chỗ nghỉ này đặt quý khách ở gần các điểm thu hút",
+      "aceage": 20,
+      "tang": 2,
+      "view": 28,
+      "like": 2,
+      "status": 1,
+      "star": 5,
+      "idcate": 4,
+      "khoangcach": 1
+    },
+    {
+      "id": 2,
+      "image": "111.jpg",
+      "name": "Phòng Đơn Đôi",
+      "price": 20000,
+      "address": "thường tín thành phố hà nội",
+      "des": "Phòng thoáng mát sạch sẽ,Nằm ở vị trí trung tâm tại Thành Phố Lệ Giang của Lệ Giang, chỗ nghỉ này đặt quý khách ở gần các điểm thu hút",
+      "aceage": 20,
+      "tang": 2,
+      "view": 28,
+      "like": 2,
+      "status": 1,
+      "star": 5,
+      "idcate": 3,
+      "khoangcach": 1
+    },
+    {
+      "id": 3,
+      "image": "111.jpg",
+      "name": "Phòng Đơn Đôi",
+      "price": 20000,
+      "address": "thường tín thành phố hà nội",
+      "des": "Phòng thoáng mát sạch sẽ,Nằm ở vị trí trung tâm tại Thành Phố Lệ Giang của Lệ Giang, chỗ nghỉ này đặt quý khách ở gần các điểm thu hút",
+      "aceage": 20,
+      "tang": 2,
+      "view": 28,
+      "like": 2,
+      "status": 1,
+      "star": 5,
+      "idcate": 2,
+      "khoangcach": 1
+    },
+    {
+      "id": 4,
+      "image": "111.jpg",
+      "name": "Phòng Đơn Đôi",
+      "price": 20000,
+      "address": "thường tín thành phố hà nội",
+      "des": "Phòng thoáng mát sạch sẽ,Nằm ở vị trí trung tâm tại Thành Phố Lệ Giang của Lệ Giang, chỗ nghỉ này đặt quý khách ở gần các điểm thu hút",
+      "aceage": 20,
+      "tang": 2,
+      "view": 28,
+      "like": 2,
+      "status": 1,
+      "star": 5,
+      "idcate": 1,
+      "khoangcach": 1
+    }
+  ],
+  "comments": [
+    {
+      "idroom": 1,
+      "name": "Phòng Đơn Đôi",
+      "content": "a",
+      "star": 1,
+      "idproduct": 1,
+      "id": 1
+    },
+    {
+      "idroom": 1,
+      "name": "Phòng Đơn Đôi",
+      "content": "a",
+      "star": 1,
+      "idproduct": 3,
+      "id": 1
+    }
+  ],
+  "bookings": [
+    {
+      "name": "s",
+      "quantity": "2",
+      "check_in": "6/4/2023",
+      "check_out": "1/4/2023",
+      "phone": "0334590019",
+      "email": "2s@gmail.com",
+      "gender": "1",
+      "payment": "1",
+      "status": 1,
+      "message": "s",
+      "cccd": "103345900191",
+      "totalamount": 32000,
+      "iduser": 1,
+      "id": 1
+    },
+    {
+      "name": "luaans",
+      "email": "luanntph254632@gmail.com",
+      "image": "222.jpg",
+      "password": "123",
+      "id": 2
+    },
+    {
+      "name": "s",
+      "quantity": "7",
+      "check_in": "4/4/2023",
+      "check_out": "7/4/2023",
+      "phone": "0334590019",
+      "email": "s@gmail.com",
+      "gender": "1",
+      "payment": "1",
+      "status": 1,
+      "message": "s",
+      "cccd": "033459001911",
+      "totalamount": 40000,
+      "iduser": 3,
+      "id": 3
+    },
+    {
+      "name": "luan",
+      "quantity": "2",
+      "check_in": "5/4/2023",
+      "check_out": "13/4/2023",
+      "phone": "0334590019",
+      "email": "luan@gmail.com",
+      "gender": "2",
+      "payment": "2",
+      "status": 1,
+      "message": "dq",
+      "cccd": "033459001911",
+      "totalamount": 60000,
+      "iduser": 2,
+      "id": 4
+    }
+  ],
+  "card": [],
+  "user": [
+    {
+      "name": "luaan",
+      "email": "luanntph254631@gmail.com",
+      "image": "111.jpg",
+      "password": "123",
+      "id": 1
+    },
+    {
+      "name": "sa",
+      "email": "luanntph254632@gmail.com",
+      "image": "tải xuống.jpeg",
+      "id": 2,
+      "password": "s"
+    },
+    {
+      "name": "luaan",
+      "email": "luanntph254633@gmail.com",
+      "image": "111.jpg",
+      "password": "123",
+      "id": 3
+    },
+    {
+      "name": "luaan",
+      "email": "luanntph254634@gmail.com",
+      "password": "123",
+      "image": "111.jpg",
+      "id": 4
+    }
+  ],
+  "categories": [
+    {
+      "name": "Phòng Cách Tân",
+      "des": "Loại Phòng Tốt",
+      "id": 1
+    },
+    {
+      "name": "Phòng Cách Tân",
+      "des": "Loại Phòng Tốt",
+      "id": 1
+    },
+    {
+      "name": "Phòng Cách Tân",
+      "des": "Loại Phòng Tốt",
+      "id": 1
+    }
+  ],
+  "contact": {
+    "name": "s",
+    "phone": "0334590019",
+    "email": "s@gmail.com",
+    "image": "111.jpg",
+    "message": "mai lấy"
+  }
+}

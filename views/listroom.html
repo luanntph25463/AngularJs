@@ -1,6 +1,31 @@
-<div class="container mt-5 ">
+<div class="container-fluid ms-5 mt-5 ">
     <div class="row ">
-        <div class="col-md-3 bg-body-secondary">
+        <li class="nav-item">
+            <a href="">
+                <div id="wrapper">
+                    <div class="cart-tab visible">
+                        <a href="#" title="View your shopping cart" class="cart-link">
+                            <span class="amount">${{card.price}}</span>
+                            <span class="contents">2 items</span>
+                        </a>
+                        <div class="cart">
+                            <h2>Cart</h2>
+                            <div class="cart-items">
+                                <ul>
+                                    <li class="clearfix text-center text-dark">
+                                        <img width="100px" src="../libs/images/{{room.image}}"
+                                            class="productimg">
+                                        <h4>{{i.name}}</h4>
+                                        <span class="item-price">$ {{i.price}}</span>
+                                    </li>
+                                </ul>
+                            </div><!-- @end .cart-items -->
+                            <a href="#" class="checkout">Go To Checkout →</a>
+                        </div><!-- @end .cart -->
+                    </div><!-- @end .cart-tab -->
+            </a>
+        </li>
+        <div class="col-md-3 bg-body-secondary p-2">
             <div class="row p-1 rounded border border-light">
                 <h1 class="h5">Chi tiết đặt phòng của bạn</h1>
                 <div class="col-md-6">
@@ -21,58 +46,53 @@
                 </h1>
             </div>
             Giá Cao Nhất
-            <input type="radio" class="form-check"> 
+            <input type="radio" ng-model="max" class="form-check"> 
             Giá Thấp Nhất
-            <input type="radio" class="form-check">
+            <input type="radio" ng-model="min" value="1" class="form-check">
             <h1 class="h5 text-danger mt-5">Tên Phòng</h1>
             <div class="d-flex  ">
-                <input type="text" class="form-control" placeholder="Tên Phòng"><button type="submit"
-                    class="bg-dark text-light p-2" value=" ">></button>
+                <input type="text" class="form-control" ng-model="find" placeholder="Tên Phòng"><button type="submit"
+                    class="bg-dark text-light p-2" value=" " ng-click="findroom()">></button>
             </div>
             <div class="range mt-4">
                 <h3 class="h5 text-danger">Tỷ lệ trung bình hàng đêm </h3>
-                <div>$500- $600</div>
-                <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
-            </div>
-            <div class="range mt-4 ">
-                <h3 class="h5 text-danger">Tỷ lệ trung bình hàng đêm </h3>
-                <div>$500- $600</div>
-                <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
+                <div>$0- $1000</div>
+                <input type="range" class="form-range" ng-model="ranger" min="0" max="10000" step="1" id="customRange3">
             </div>
             <div class="range mt-4 ">
                 <h3 class="h5 text-danger">Khoảng Cách Từ</h3>
-                <select class="dropdown form-select" tabindex="10"
+                <select class="dropdown form-select" ng-model="khoangcach" tabindex="10"
                     data-settings='{"wrapperClass":"flat"}'>
                     <option value="1">Trung Tâm Thành Phố </option>
-                    <option value="1">Offline </option>
+                    <option value="2">Ngoài Thành Phố </option>
                 </select>
             </div>
             <h3 class="h5 text-danger mt-3">Đánh Giá Sao</h3>
             <ul class="text-warning">
                 <li class="list-group-item mt-3">
-                    <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                    <input class="form-check-input me-1" ng-model="star" type="radio" value="5" aria-label="...">
                     <i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i>
                     <i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i>
                     <i class="fa-sharp fa-solid fa-star"></i>
                 </li>
                 <li class="list-group-item  mt-2">
-                    <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                    <input class="form-check-input me-1" type="radio" ng-model="star" value="4" aria-label="...">
                     <i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i>
                     <i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i>
 
                 </li>
                 <li class="list-group-item  mt-2">
-                    <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                    <input class="form-check-input me-1" type="radio" ng-model="star" value="3" aria-label="...">
                     <i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i>
                     <i class="fa-sharp fa-solid fa-star"></i>
 
                 </li>
                 <li class="list-group-item  mt-2">
-                    <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                    <input class="form-check-input me-1" type="radio" ng-model="star" value="2" aria-label="...">
                     <i class="fa-sharp fa-solid fa-star"></i><i class="fa-sharp fa-solid fa-star"></i>
                 </li>
                 <li class="list-group-item  mt-2">
-                    <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                    <input class="form-check-input me-1" type="radio" ng-model="star" value="1" aria-label="...">
                     <i class="fa-sharp fa-solid fa-star"></i>
                 </li>
             </ul>
@@ -86,7 +106,44 @@
                 </ul>
             </div>
         </div>
-        <div class="ms-2 col-md-8 ">
+        <div class="ms-2 col-md-8 shadow-lg p-5">
+            <div ng-hide="findroom">
+                <div  class="row border border-body-subtle shadow-lg">
+                    <div class="col-md-8 bg-body-secondary">
+                        <a href="" class="text-danger"><span class="glyphicon glyphicon-bed text-danger"
+                                aria-hidden="true"></span><i class="fa-solid fa-bed p-2"></i>{{room.name}}</a>
+                        <p class="mt-3"></p>
+                        <div class="hotel-left-grids row m-2">
+                            <div class="hotel-left-one col-md-6">
+                                <a href=""><img width="100%" src="../libs/images/{{room.image}}" alt="" /></a>
+                            </div>
+                            <div class="hotel-left-two col-md-6">
+                                <div class="rating text-left">
+                                    <span>☆</span>
+                                    <span>☆</span>
+                                    <span>☆</span>
+                                    <span>☆</span>
+                                    <span>☆</span>
+                                </div>
+                                <a href="single.html"><span class="glyphicon glyphicon-map-marker"
+                                        aria-hidden="true"></span> <i
+                                        class="fa-sharp fa-solid fa-location-dot"></i> Diamond
+                                    Street</a>
+                                <p class="my-4">{{room.des}}</span></p>
+                                    <a class="bg-danger text-light rounded p-1"><i class="fa-solid fa-gift"></i>Quà tặng cho người mới</a> </br>
+                                    <p href="" class="mt-3 text-primary"><i class="fa-regular fa-heart"></i>Ấn Tượng - (45)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 p-3 bg-light">
+                        <h4><del>$8,750</del><a class="text-danger ms-4">${{room.price}}</a></h4>
+                        <p class="h5">Best price</p>
+                        <p class="text-success mt-5"><i class="fa-solid fa-hotel"></i>Đặt phòng đển nhận ưu đãi khủng 11.11
+                        </p>
+                        <a class="btn btn-dark px-1 px-5" href="#!/detail/{{room.id}}" >Continue</a>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <h1 class="h5 text-light bg-primary rounded p-3">StayInn/ Nhận Phòng : 2023-03-19 / Trả Phòng : 2023-03-20
                 </h1>
@@ -101,14 +158,14 @@
                     Muốn nhận mã ưu đãi và giá phòng thấp nhất?</h1>
                 <p class="text-info">Đặt ngay trên ứng dụng Traveloka, giá trung thực không phí ẩn</p>
             </div>
-            <div ng-repeat="i in luan">
-                <div class="row border border-body-subtle">
+            <div ng-show="findroom" ng-repeat="i in room">
+                <div class="row border border-body-subtle shadow-lg">
                     <div class="col-md-8 bg-body-secondary">
                         <a href="" class="text-danger"><span class="glyphicon glyphicon-bed text-danger"
-                                aria-hidden="true"></span><i class="fa-solid fa-bed"></i>{{i.name}}</a>
+                                aria-hidden="true"></span><i class="fa-solid fa-bed p-2"></i>{{i.name}}</a>
                         <p class="mt-3"></p>
-                        <div class="hotel-left-grids row">
-                            <div class="hotel-left-one border border-body-subtle col-md-6">
+                        <div class="hotel-left-grids row m-2">
+                            <div class="hotel-left-one col-md-6">
                                 <a href=""><img width="100%" src="../libs/images/{{i.image}}" alt="" /></a>
                             </div>
                             <div class="hotel-left-two col-md-6">
@@ -123,7 +180,7 @@
                                         aria-hidden="true"></span> <i
                                         class="fa-sharp fa-solid fa-location-dot"></i> Diamond
                                     Street</a>
-                                <p class="m">{{i.des}}</span></p>
+                                <p class="my-4">{{i.des}}</span></p>
                                     <a class="bg-danger text-light rounded p-1"><i class="fa-solid fa-gift"></i>Quà tặng cho người mới</a> </br>
                                     <p href="" class="mt-3 text-primary"><i class="fa-regular fa-heart"></i>Ấn Tượng - (45)</p>
                             </div>

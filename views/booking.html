@@ -1,106 +1,224 @@
-<div class="booking bg-body-secondary p-5">
-    <div class="container">
+<div class="booking bg-body-secondary p-5 d-block">
+    <div class="container-fluid">
+        <div class="row position-absolute top-100" margin-top="-50px">
+            <li class="nav-item dropdown circle ">
+                <a class="nav-link dropdown-toggle active text-light hover:text-danger-emphasis rounded-circle"
+                    href="#" id="navbarDropdownMenuLink" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="./libs/images/{{user.image}}" width="100px" alt="">
+                </a>
+                <a href=""></a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#!/info/{{user.id}}">Thông Tin Cá Nhân</a></li>
+                    <li class="nav-item dropdown-item">
+                        <a class="nav-link" ng-hide="active" href="#!/logout"><i
+                                class="fa-solid fa-right-to-bracket"></i>Thoát</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="">
+                    <div id="wrapper">
+                        <div class="cart-tab visible">
+                            <a href="#" title="View your shopping cart" class="cart-link">
+                                <span class="amount">${{card.price}}</span>
+                                <span class="contents">2 items</span>
+                            </a>
+                            <div class="cart">
+                                <h2>Cart</h2>
+                                <div class="cart-items">
+                                    <ul>
+                                        <li class="clearfix text-center text-dark" ng-repeat="i in card">
+                                            <img width="100px" src="../libs/images/{{i.image}}"
+                                                class="productimg">
+                                            <h4>{{i.name}}</h4>
+                                            <span class="item-price">$ {{i.price}}</span>
+                                        </li>
+                                    </ul>
+                                </div><!-- @end .cart-items -->
+                                <a href="#" class="checkout">Go To Checkout →</a>
+                            </div><!-- @end .cart -->
+                        </div><!-- @end .cart-tab -->
+                </a>
+            </li>
+         </div>
         <h2 class="h1 text-center text-danger m-5">BOOKING</h2>
-            <div class="row">
-                <div class="col-md-3 ">
-                    <h3>Hotels</h3>
-                    <ul>
-                        <li><a href="" style="width: 100%;" class="mt-3 w-100  rounded img-fluid"><img src="../libs/images/333.jpg" alt="" /></a></li>
-                    </ul>
-                    <ul>
-                        <li><a href="" style="width: 100%;" class="mt-3 w-100"><img src="../libs/images/333.jpg" alt="" /></a></li>
-                    </ul>
-                    <ul>
-                        <li><a href="" style="width: 100%;" class="mt-3 w-100"><img src="../libs/images/333.jpg" alt="" /></a></li>
-                    </ul>
-                    <ul>
-                        <li><a href="" style="width: 100%;" class="mt-3 w-100"><img src="../libs/images/333.jpg" alt="" /></a></li>
-                    </ul>
-                </div>
-                <div class="col-md-8 ms-3">
-                    <form class="form-group">
-                        <h4 class="h5 text-danger mt-2">SỐ LƯỢNG NGƯỜI ?</h4>
-                        <div class="dropdown-button">           			
-                            <select class="dropdown form-control form-select" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
-                                    <option value="1">01 Member</option>
-                                    <option value="2">02 Members</option>
-                                    <option value="3">03 Members</option>
-                                    <option value="4">04 Members</option>
-                                    <option value="5">05 Members</option>
-                                    <option value="6">06 Members</option>
-                                    <option value="7">07 Members</option>
-                                    <option value="8">08 Members</option>
-                                    <option value="9">09 Members</option>
-                                    <option value="9">10 Members</option>
-                                    <option value="9">10+ Members</option>
-                             </select>
-                        </div>
-                        <h4 class="h5 text-danger mt-2">Rooms</h4>
-                        <div class="dropdown-button">           			
-                            <select class="dropdown form-select" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
-                                    <option value="1">Single Room</option>
-                                    <option value="2">Double Room</option>
-                                    <option value="3">phòng nghỉ trăng mật</option>
-                                    <option value="4">Phòng Gia Đình</option>
-                             </select>
-                        </div>
-                        <h4 class="h5 text-danger mt-2">LỰA CHỌN THỜI GIAN Ở?</h4>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label class="form-label">Select Date :</label>
-                                <input class="form-control" id="datepicker" type="date" value="Date"  required="">
-                            </div>
-                            <div class="col-md-4 mt-2">
-                                <label class="form-label">check In :</label>
-                                <input class="form-control" id="datepicker" type="date" value="Date"  required="">
-                            </div>
-                            <div class="col-md-4 mt-2">
-                                <label class="form-label">Check Out :</label>
-                                <input class="form-control" id="datepicker" type="date" value="Date"  required="">
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>	
-                        <div class="row">
-                            <div class="col-md-4 mt-2">
-                                <label class="form-label">Chứng Minh Thư</label>
-                                <input class="form-control" id="datepicker" type="text" value="cmnd"  required="">
-                            </div>
-                            <div class="col-md-4 mt-5">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Nam
-                                </label>
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Nữ
-                                </label>
-                            </div>
-                            <div class="col-md-4 mt-5">
-                                <div class="input-group">
-                                    <span class="input-group-text" id="basic-addon1">+84</span>
-                                    <input type="text" class="form-control" placeholder="Số Điện Thoại" aria-label="">
-                                </div>
-                            </div>
-                        </div>
-                        <h4 class="h5 text-danger mt-2">THÔNG TIN CHI TIẾT</h4>
-                        <input type="text" value="Name" class="form-control mt-3" required="">
-                        <input type="email" value="email" class="form-control mt-3" required="">
-                        <input type="text" value="phone" class="form-control mt-3" required="">
+        <div class="row">
+            <div class="col-md-5 ">
+                <form action="" class="border border-dark p-2 flex-column rounded shadow-lg" >
 
-                        <textarea type="text" class="form-control mt-5" required=""> Message... </textarea>
-                        <h4 class="h5 text-danger mt-2">Phương Thức Thanh Toán</h4>
-                        <div class="dropdown-button">           			
-                            <select class="dropdown form-select" tabindex="10" data-settings='{"wrapperClass":"flat"}'>
-                                    <option value="1">Online </option>
-                                    <option value="1">Offline </option>
+                    <h3 class="bg-dark-subtle h4 text-center text-danger-emphasis p-1"> Xác Nhận Và Thanh Toán</h3>
+                    <hr>
 
-                             </select>
+                    <div class="row" ng-repeat="i in card">
+                        <div class="col-md-3">
+                            <button ng-click="onDelete1(i.id)">X</button>
+
+                            <li><a href="" class="mt-3  rounded img-fluid"><img width="260px" class="w-100 img-fluid"
+                                        src="../libs/images/{{i.image}}" alt="" /></a></li>
                         </div>
-                        <button class="btn btn-success m-auto me-5 py-1 px-5 mt-5 mx-5">RESERVE NOW</button>
-                    </form>
-                    <!--strat-date-piker-->
+                        <div class="col-md-9">
+                            <h5 class="h5 text-info">{{i.name}}</h5>
+                            <p class="">{{i.des}}</p>
+                        </div>
+                        <hr>
+
+                    </div>
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <h1 class="h5">Tổng Tiền</h1>
+                        </div>
+                        <div class="col-md-6 float-end">
+                            <h1 class="h5 text-end">$ {{card.price}}</h1>
+                        </div>
+                    </div>
+                    <input type="hidden" ng-model="user.id">
+                    <input type="hidden" ng-model="card.price">
+                </form>
+                <div>
                 </div>
-                <div class="clearfix"></div>
             </div>
+            <div class="col-md-6 ms-3">
+                <form class="form-group">
+                    <h4 class="h5 text-danger mt-2 mb-3">Số Lượng Người ?</h4>
+                    <div class="dropdown-button form-floating">
+                        <select ng-model="inputValue.quantity" ng-style="kiemTraDuLieu.quantity && {'border-color': 'red'}" class="dropdown form-control form-select" tabindex="10"
+                            data-settings='{"wrapperClass":"flat"}'>
+                            <option value="1">01 Member</option>
+                            <option value="2">02 Members</option>
+                            <option value="3">03 Members</option>
+                            <option value="4">04 Members</option>
+                            <option value="5">05 Members</option>
+                            <option value="6">06 Members</option>
+                            <option value="7">07 Members</option>
+                            <option value="8">08 Members</option>
+                            <option value="9">09 Members</option>
+                            <option value="10">10 Members</option>
+                            <option value="11">10+ Members</option>
+                        </select>
+                        <label class= "ms-2" for="datepicker">Số người ở</label>
+
+                        <p ng-if="kiemTraDuLieu.quantity == true" class="alert alert-danger mt-3">*Vui Lòng Chọn Số Người ở
+                        </p>
+                    </div>
+                    <div class="row ">
+                    <h4 class="h5 text-danger mt-4">LỰA CHỌN THỜI GIAN Ở?</h4>
+
+                        <div class="col-md-6 mt-4 form-floating">
+                            <input type="date" id="check_in" class="form-control ps-2" ng-style="kiemTraDuLieu.check_in && {'border-color': 'red'}" ng-model="inputValue.check_in"
+                             >
+                            <label for="check_in" class="label ms-2 ">Ngày Đến</label>
+                            <p ng-if="kiemTraDuLieu.check_in || kiemTraDuLieu.check_in1 " class="alert alert-danger rounded mt-4">{{ kiemTraDuLieu.check_in ? "*Chọn Ngày Vào" : "Ngày  Vào Không Thể Sau Ngày Về" }}</p>
+                            <p ng-if="kiemTraDuLieu.check_in2 == true" class="alert alert-danger mt-3">*Không Thể Chọn Ngày Đã Qua</p>
+
+
+                        </div>
+                        <div class="col-md-6 mt-4 form-floating">
+                            <input class="form-control" ng-style="kiemTraDuLieu.check_out && {'border-color': 'red'}"  ng-model="inputValue.check_out" id="datepicker" type="date"
+                                required="">
+                            <label class=" ms-2" for="datepicker">Ngày Về</label>
+                            <p ng-if="kiemTraDuLieu.check_out || kiemTraDuLieu.check_out1 " class="alert alert-danger rounded mt-4">{{ kiemTraDuLieu.check_out ? "*Chọn Ngày Về" : "Ngày Đã  Qua" }}</p>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-md-4 mt-2 form-floating">
+                            <input class="form-control" id="datepicker" ng-style="kiemTraDuLieu.cccd && {'border-color': 'red'}" ng-model="inputValue.cccd" type="text"
+                                placeholder="cccd" required="">
+                            <label class="form-label">Chứng Minh Thư</label>
+
+                            <p ng-if="kiemTraDuLieu.cccd || kiemTraDuLieu.cccd1 " class="alert alert-danger rounded mt-4">{{ kiemTraDuLieu.phone ? "*Không Bỏ Trống" : "*Sai định dạng" }}</p>
+                        </div>
+                        <div class="col-md-4 mt-4">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" ng-style="kiemTraDuLieu.gender && {'border-color': 'red'}" value="1"
+                                ng-model="inputValue.gender" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Nam
+                            </label>
+                            <input class="form-check-input" type="radio" ng-model="inputValue.gender" value="2"
+                                name="flexRadioDefault" id="flexRadioDefault2" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Nữ
+                            </label>
+                            <p ng-if="kiemTraDuLieu.gender == true" class="alert alert-danger mt-5">*Vui Lòng Chọn Giới Tính
+                            </p>
+                        </div>
+                        <div class="col-md-4 mt-4">
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon1">+84</span>
+                                <input type="text" class="form-control" ng-style="kiemTraDuLieu.phone && {'border-color': 'red'}" id="phone" ng-model="inputValue.phone"
+                                     aria-label="" placeholder="Phone">
+                            <p ng-if="kiemTraDuLieu.phone || kiemTraDuLieu.phone1 " class="alert alert-danger rounded mt-4">{{ kiemTraDuLieu.phone ? "*Hãy nhập Số Điện Thoại" : "*Sai định dạng Số Điện Thoại" }}</p>
+
+                        </div>
+                        </div>
+                    </div>
+                    <h4 class="h5 text-danger mt-2">THÔNG TIN CHI TIẾT</h4>
+                    <div class="form-floating">
+                        <input type="text" placeholder="Tên" id="ten" ng-model="inputValue.name" ng-style="kiemTraDuLieu.name && {'border-color': 'red'}" class="form-control mt-3"
+                        required="">
+                        <label for="ten">Tên</label>
+                    <p ng-if="kiemTraDuLieu.name == true" class="alert alert-danger mt-3">*Vui Lòng Nhập Họ Tên</p>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" placeholder="email" ng-model="inputValue.email" ng-style="kiemTraDuLieu.email && {'border-color': 'red'}" class="form-control mt-3"
+                        required="">
+                        <label for="">Email</label>
+                        <p ng-if="kiemTraDuLieu.email || kiemTraDuLieu.email1 " class="alert alert-danger rounded mt-4">{{ kiemTraDuLieu.email ? "*Không Bỏ Trống" : "*Sai định dạng" }}</p>
+
+                    </div>
+ 
+                    <div class="form-floating">
+                    <textarea type="text" class="form-control mt-5" ng-style="kiemTraDuLieu.message && {'border-color': 'red'}" ng-model="inputValue.message"
+                        required=""></textarea>
+                        <label for="">Message</label>
+                    <p ng-if="kiemTraDuLieu.message == true" class="alert alert-danger mt-3">*Vui Lòng Không Bỏ Trống Tin Nhắn
+                    </p>
+                </div>
+                    <h4 class="h5 text-danger mt-2">Phương Thức Thanh Toán</h4>
+                    <div class="form-floating">
+                        <select class="dropdown form-select" ng-style="kiemTraDuLieu.payment && {'border-color': 'red'}" id="pttt" ng-model="inputValue.payment" tabindex="10"
+                            data-settings='{"wrapperClass":"flat"}'>
+                            <option value="1">Online </option>
+                            <option value="2">Offline </option>
+                        </select>
+                        <label for="pttt">Chọn Phương Thức</label>
+                        <p ng-if="kiemTraDuLieu.payment == true" class="alert alert-danger mt-3">*Vui Lòng Chọn Phương Thức
+                            Thanh Toán</p>
+                    </div>
+                    <button class="btn btn-primary m-auto me-5 py-1 px-5 mt-5 mx-5 m-5" ng-click="onSubmitForm()">RESERVE
+                        NOW</button>
+                </form>
+                <!--strat-date-piker-->
+            </div>
+            <div class="clearfix"></div>
+        </div>
     </div>
+    <li class="nav-item">
+        <a href="">
+            <div id="wrapper">
+                <div class="cart-tab visible">
+                    <a href="#" title="View your shopping cart" class="cart-link">
+                        <p class="amount text-danger">${{card.price}}</p>
+                        <span class="contents">2 items</span>
+                    </a>
+                    <div class="cart">
+                        <h2>Cart</h2>
+                        <div class="cart-items">
+                            <ul>
+                                <li class="clearfix text-center text-dark" ng-repeat="i in card">
+                                    <img width="100px" src="../libs/images/{{i.image}}" class="productimg">
+                                    <h4>{{i.name}}</h4>
+                                    <span class="item-price">$ {{i.price}}</span>
+                                </li>
+                            </ul>
+                        </div><!-- @end .cart-items -->
+                        <a href="#" class="checkout">Go To Checkout →</a>
+                    </div><!-- @end .cart -->
+                </div><!-- @end .cart-tab -->
+        </a>
+    </li>
+    
 </div>

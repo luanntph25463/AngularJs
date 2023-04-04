@@ -1,65 +1,110 @@
-window.detailController = function($scope,$routeParams){
-    $scope.luan = [{
-        id : 1,
-        image : "111.jpg",
-        name: "Phòng Đơn Đôi",
-        price: 10000,
-        address: "thường tín thành phố hà nội",
-        des: "Phòng thoáng mát sạch sẽ,Nằm ở vị trí trung tâm tại Thành Phố Lệ Giang của Lệ Giang, chỗ nghỉ này đặt quý khách ở gần các điểm thu hút",
-        aceage: 20,
-        tang : 2,
-        time : "01,2023",
-    },{
-        id : 2,
-        image : "5.jpg",
-        name: "Phòng Cỡ Lớn",
-        price: 2400500,
-        address: "59 đường văn tiến dũng bắc từ liêm",
-        des: "Phòng thoáng mát sạch sẽ,Nằm ở vị trí trung tâm tại Thành Phố Lệ Giang của Lệ Giang, chỗ nghỉ này đặt quý khách ở gần các điểm thu hút",
-        aceage: 20,
-        tang : 3,
-        time : "01,2023",
-    },{
-        id : 3,
-        image : "6.jpg",
-        name: "Phòng Đơn Đôi",
-        price: 90000,
-        address: "159 hoàng mai bách khoa",
-        des: "Phòng thoáng mát sạch sẽ,Nằm ở vị trí trung tâm tại Thành Phố Lệ Giang của Lệ Giang, chỗ nghỉ này đặt quý khách ở gần các điểm thu hút",
-        aceage: 20,
-        tang : 2,
-        time : "01,2023",
-    },{
-        id : 4,
-        image : "777.jpg",
-        name: "Phòng Đơn Đôi",
-        price: 72000,
-        address: "quận 2 tp hồ chí minh",
-        des: "Phòng thoáng mát sạch sẽ,Nằm ở vị trí trung tâm tại Thành Phố Lệ Giang của Lệ Giang, chỗ nghỉ này đặt quý khách ở gần các điểm thu hút",
-        aceage: 39,
-        tang : 2,
-        time : "01,2023",
-    },{
-        id :5,
-        image : "22.jpg",
-        name: "Phòng Gia Đình",
-        price: 7300,
-        address: "Jl. Pahlawan VII No.247-D Sidoarjo-Surabaya",
-        des: "Phòng thoáng mát sạch sẽ,Nằm ở vị trí trung tâm tại Thành Phố Lệ Giang của Lệ Giang, chỗ nghỉ này đặt quý khách ở gần các điểm thu hút",
-        aceage: 20,
-        tang : 2,
-        time : "01,2023",
-    },{
-        id :6,
-        image : "666.jpg",
-        name: "Phòng Gia Đình",
-        price: 7300,
-        address: "Jl. Pahlawan VII No.247-D Sidoarjo-Surabaya",
-        des: "Phòng thoáng mát sạch sẽ,Nằm ở vị trí trung tâm tại Thành Phố Lệ Giang của Lệ Giang, chỗ nghỉ này đặt quý khách ở gần các điểm thu hút",
-        aceage: 20,
-        tang : 2,
-        time : "01,2023",
-    }];
-    $scope.userId = $routeParams.userId-1;
-    $scope.luans = angular.copy($scope.luan[$scope.userId]);
+window.detailController = function ($scope, $routeParams,$location, $http,$cookies) {
+    let apiURL = "http://localhost:3000/rooms";
+    let apiURL1 = "http://localhost:3000/comments";
+    let apiURL2 = "http://localhost:3000/card";
+    // getData đón dữ liệu từ api về
+    $scope.detailRoom = $routeParams.userId;
+    $scope.detailRoom1 = $routeParams.idcate;
+        // Tạo Ra 1 Đối Tượng Sửa
+      
+        if($cookies.getObject('user')){
+            $scope.user = $cookies.getObject('user');
+            $scope.onAddComment = function () {
+                $scope.kiemTraDuLieu = {}
+                // kiểm Tra nếu họ Tên trống
+                let flag = false
+                if ( !$scope.content) {
+                    $scope.kiemTraDuLieu.content = true;// Có Lỗi
+                    flag = true
+                }
+                if (!flag) {
+                    // Xử Lý Thêm
+                    var editId = $scope.editId;
+                        var newItem = {
+                            idroom:$scope.room.id,
+                            name:$scope.room.name,
+                            content:$scope.content,
+                            ten: $scope.user.name,
+                            star: 3,
+                        }
+                        $http.post(
+                            apiURL1, // đường dẫn API
+                            newItem
+                        ).then(
+                            function (response) {
+                                if (response.status == 201) {
+                                    $scope.getData();
+                                }
+                            }
+                        )
+                        $scope.alert = "Thêm Thành Công Vào Danh Sách";    
+                }
+            }
+            $scope.booknow = function () {
+                $scope.kiemTraDuLieu = {}
+                // kiểm Tra nếu họ Tên trống
+                    // Xử Lý Thêm
+                        var newItems = {
+                            image:$scope.room.image,
+                            price: $scope.room.price,
+                            name: $scope.room.name,
+                            des: $scope.room.des,
+                            idnguoimua: $scope.user.id
+                        }
+                        $http.post(
+                            apiURL2, // đường dẫn API
+                            newItems
+                        ).then(
+                            function (response) {
+                                if (response.status == 201) {
+                                    $location.path("/booking")
+                                }
+                            }
+                        )
+                        $scope.alert = "Thêm Thành Công Vào Danh Sách";
+                    
+            }
+        }
+    
+        $http.get(`${apiURL}/${$scope.detailRoom}`).then(
+            function (res) {
+                $scope.room = { ...res.data };
+            },
+        );
+   
+        $http.get(apiURL2).then(function (res) {
+            // dữ liệu được đón về thành công sẻ nằm ở biến response
+            $scope.card = res.data
+            $scope.card.price = 0
+            for(var i= 0;i<$scope.card.length;i++){
+                $scope.card.price += $scope.card[i].price
+            }
+    
+        })
+        $http.get(`${apiURL1}`).then(
+            function (response) {
+            // dữ liệu được đón về thành công sẻ nằm ở biến response
+            $scope.comment = response.data
+        })
+        $http.get(apiURL).then(function (res) {
+            // dữ liệu được đón về thành công sẻ nằm ở biến response
+            $scope.roomdetail = res.data
+            $scope.valuedetail = []
+            for(var i= 0;i<$scope.roomdetail.length;i++){
+                if($scope.detailRoom1 == $scope.roomdetail[i].idcate){
+                    $scope.valuedetail.push({...res.data[i]})
+                }
+            }
+        })
+           $http.get(apiURL1).then(function (res) {
+            // dữ liệu được đón về thành công sẻ nằm ở biến response
+            $scope.comment1 = res.data
+            $scope.valucomment = []
+            for(var i= 0;i<$scope.comment1.length;i++){
+                if($scope.detailRoom == $scope.comment1[i].idproduct){
+                    $scope.valucomment.push({...res.data[i]})
+                }
+            }
+            console.log($scope.valucomment)
+        })
 }

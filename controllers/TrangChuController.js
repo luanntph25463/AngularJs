@@ -1,65 +1,41 @@
-window.TrangChuController = function($scope){
+window.TrangChuController = function ($scope,$cookies,$location, $routeParams, $http) {
     $scope.title = "Trang Chủ";
-    $scope.luan = [{
-        id : 1,
-        image : "111.jpg",
-        name: "Phòng Đơn Đôi",
-        price: 10000,
-        address: "thường tín thành phố hà nội",
-        des: "Phòng thoáng mát sạch sẽ,Nằm ở vị trí trung tâm tại Thành Phố Lệ Giang của Lệ Giang, chỗ nghỉ này đặt quý khách ở gần các điểm thu hút",
-        aceage: 20,
-        tang : 2,
-        time : "01,2023",
-    },{
-        id : 2,
-        image : "5.jpg",
-        name: "Phòng Cỡ Lớn",
-        price: 2400500,
-        address: "59 đường văn tiến dũng bắc từ liêm",
-        des: "Phòng thoáng mát sạch sẽ,Nằm ở vị trí trung tâm tại Thành Phố Lệ Giang của Lệ Giang, chỗ nghỉ này đặt quý khách ở gần các điểm thu hút",
-        aceage: 20,
-        tang : 3,
-        time : "01,2023",
-    },{
-        id : 3,
-        image : "6.jpg",
-        name: "Phòng Đơn Đôi",
-        price: 90000,
-        address: "159 hoàng mai bách khoa",
-        des: "Phòng thoáng mát sạch sẽ,Nằm ở vị trí trung tâm tại Thành Phố Lệ Giang của Lệ Giang, chỗ nghỉ này đặt quý khách ở gần các điểm thu hút",
-        aceage: 20,
-        tang : 2,
-        time : "01,2023",
-    },{
-        id : 4,
-        image : "777.jpg",
-        name: "Phòng Đơn Đôi",
-        price: 72000,
-        address: "quận 2 tp hồ chí minh",
-        des: "Phòng thoáng mát sạch sẽ,Nằm ở vị trí trung tâm tại Thành Phố Lệ Giang của Lệ Giang, chỗ nghỉ này đặt quý khách ở gần các điểm thu hút",
-        aceage: 39,
-        tang : 2,
-        time : "01,2023",
-    },{
-        id :5,
-        image : "22.jpg",
-        name: "Phòng Gia Đình",
-        price: 7300,
-        address: "Jl. Pahlawan VII No.247-D Sidoarjo-Surabaya",
-        des: "Phòng thoáng mát sạch sẽ,Nằm ở vị trí trung tâm tại Thành Phố Lệ Giang của Lệ Giang, chỗ nghỉ này đặt quý khách ở gần các điểm thu hút",
-        aceage: 20,
-        tang : 2,
-        time : "01,2023",
-    },{
-        id :6,
-        image : "666.jpg",
-        name: "Phòng Gia Đình",
-        price: 7300,
-        address: "Jl. Pahlawan VII No.247-D Sidoarjo-Surabaya",
-        des: "Phòng thoáng mát sạch sẽ,Nằm ở vị trí trung tâm tại Thành Phố Lệ Giang của Lệ Giang, chỗ nghỉ này đặt quý khách ở gần các điểm thu hút",
-        aceage: 20,
-        tang : 2,
-        time : "01,2023",
-    }];
-    
+    let apiURL = "http://localhost:3000/rooms";
+    let apiURL1 = "http://localhost:3000/card";
+    let apiURL2 = "http://localhost:3000/categories";
+    // getData đón dữ liệu từ api về
+    $scope.co = false;
+    if($cookies.getObject('user')){
+        $scope.user = $cookies.getObject('user');
+        $scope.showlogin = true
+        console.log($scope.user)
+
+    }else{
+         console.log($scope.user)
+    }
+    $scope.logout = function (){
+        $cookies.removeOBject("user")
+    }
+    $http.get(apiURL1).then(function (res) {
+        // dữ liệu được đón về thành công sẻ nằm ở biến response
+        $scope.card = res.data
+        $scope.card.price = 0
+        for(var i= 0;i<$scope.card.length;i++){
+            $scope.card.price += $scope.card[i].price
+        }
+
+    })
+    $http.get(apiURL2).then(
+        function (response) {
+        // dữ liệu được đón về thành công sẻ nằm ở biến response
+        $scope.cate = response.data
+    })
+    $scope.getData = function () {
+        $http.get(apiURL).then(
+            function (response) {
+            // dữ liệu được đón về thành công sẻ nằm ở biến response
+            $scope.rooms = response.data
+        })
+    }
+    $scope.getData();
 }

@@ -1,10 +1,59 @@
-<div class="container mt-5">
+<div class="container-fluid mt-5">
+    <div class="row position-absolute top-100" margin-top="-50px">
+        <li class="nav-item dropdown circle ">
+            <a class="nav-link dropdown-toggle active text-light hover:text-danger-emphasis rounded-circle"
+                href="#" id="navbarDropdownMenuLink" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="./libs/images/{{user.image}}" width="100px" alt="">
+            </a>
+            <a href=""></a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#!/info">Thông Tin Cá Nhân</a></li>
+                <li class="nav-item dropdown-item">
+                    <a class="nav-link" ng-hide="active" href="#!/logout"><i
+                            class="fa-solid fa-right-to-bracket"></i>Thoát</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="">
+                <div id="wrapper">
+                    <div class="cart-tab visible">
+                        <a href="#" title="View your shopping cart" class="cart-link">
+                            <span class="amount">${{card.price}}</span>
+                            <span class="contents">2 items</span>
+                        </a>
+                        <div class="cart">
+                            <h2>Cart</h2>
+                            <div class="cart-items">
+                                <ul>
+                                    <li class="clearfix text-center text-dark" ng-repeat="i in card">
+                                        <img width="100px" src="../libs/images/{{i.image}}"
+                                            class="productimg">
+                                        <h4>{{i.name}}</h4>
+                                        <span class="item-price">$ {{i.price}}</span>
+                                    </li>
+                                </ul>
+                            </div><!-- @end .cart-items -->
+                            <a href="#" class="checkout">Go To Checkout →</a>
+                        </div><!-- @end .cart -->
+                    </div><!-- @end .cart-tab -->
+            </a>
+        </li>
+     </div>
     <div class="row">
-        <div class="col-md-8 bg-body-secondary">
-            <h1 class="h5 text-danger mt-3"> <i class="fa-solid fa-bed me-4"></i>{{luans.name}}</h1>
-            <p>{{luans.address}}</p>
+        <input type="hidden" ng-model="room.price">
+        <input type="hidden" ng-model="room.image">
+        <input type="hidden" ng-model="room.name">
+        <input type="hidden" ng-model="room.id">
+        <input type="hidden" ng-model="user.id">
+        <input type="hidden" ng-model="room.des">
+        <div class="col-md-7 p-2 bg-body-secondary">
+            <h1 class="h5 text-danger mt-3"> <i class="fa-solid fa-bed me-4"></i>{{room.name}}</h1>
+            <p>{{room.address}}</p>
             <p>Jump to: <span class="text-danger">Over View|Room Choices|Hotel Information</span></p>
-            <img width="100%" class="img-thumbnail" src="../libs/images/{{luans.image}}" alt="">
+            <img width="100%" class="img-thumbnail" src="../libs/images/{{room.image}}" alt="">
             <div class="row">
                 <div class="col-md-2">
                     <img width="100px" class="img-thumbnail w-100" src="../libs/images/111.jpg" alt="">
@@ -35,24 +84,24 @@
                 </div>
             </div>
             <div class="row mt-5">
-                <h1 class="h5">Giới Thiệu Phòng :</h1>
-                <h1 class="h5">{{luans.des}}</h1>
-                <p> Tầng : {{luans.tang}}</p>
-                <p>Diện Tích : {{luans.aceage}}m2</p>
-                <p>Phòng Dành Cho : 5 Người</p>
-                <p>Lượt Xem Phòng : 166</p>
-                <p>Lượt Thích : 47</p>
+                <h1 class="col-md-6 h5 text-dark-emphasis">Giới Thiệu Phòng :</h1>
+                <h1 class="col-md-6 h5 text-dark-emphasis">{{room.des}}</h1>
+                <h1 class="col-md-6 h5 text-dark-emphasis"> Tầng : {{room.tang}}</h1>
+                <h1 class="col-md-6 h5 text-dark-emphasis">Diện Tích : {{room.aceage}}m2</h1>
+                <h1 class="col-md-6 h5 text-dark-emphasis">Phòng Dành Cho : 5 Người</h1>
+                <h1 class="col-md-6 h5 text-dark-emphasis">Lượt Xem Phòng : {{room.view}}</h1>
+                <h1 class="col-md-6 h5 text-dark-emphasis">Lượt Thích : {{room.like}}</h1>
             </div>
         </div>
-        <div class="col-md-4 float-end">
+        <div class="col-md-5 float-end">
             <div class="row ms-2">
                 <div class="border border-body-secondary p-4">
                     <h1 class="bg-danger h5 p-3"><i class="fa-duotone fa-check"></i>Đề nghị đặc biệt
                     </h1>
                     <div class="float-end">
-                        <p class="h3"><del>8,750$</del><span class="text-danger">${{luans.price}}</span></p>
+                        <p class="h3"><del>8,750$</del><span class="text-danger">${{room.price}}</span></p>
                         <p>Best price</p>
-                        <button class="btn btn-dark text-light px-1 px-5">Book Now</button>
+                        <button class="btn btn-dark text-light px-1 px-5" ng-click="booknow()">Book Now</button>
                     </div>
                 </div>
             </div>
@@ -91,15 +140,14 @@
 </div>
 <div class="container mt-5">
     <h1 class="m-5">PHÒNG LIÊN QUAN</h1>
-    <div class="row mt-5">
+    <div class="row mt-5" ng-repeat="i in valuedetail">
         <div class="col-md-3">
-            <img src="../libs/images/111.jpg" alt="">
+            <img src="../libs/images/{{i.image}}" alt="">
         </div>
         <div class="col-md-3">
             <h1 class="h5 text-danger">Thông tin phòng
             </h1>
-            <p>Phòng thoáng mát sạch sẽ,Nằm ở vị trí trung tâm tại Thành Phố Lệ Giang của Lệ Giang, chỗ
-                nghỉ này đặt quý khách ở gần các điểm thu hút</p>
+            <p>{{y.des}}</p>
             <h3 class="h5">DỊCH VỤ</h3>
             <p>Ghế Tình Yêu
             </p>
@@ -115,37 +163,7 @@
         </div>
         <div class="col-md-3">
             <h1 class="text-danger h5">Giá Phòng</h1>
-            <p class="text-danger">12.000.000đ Đặt phòng
-            </p>
-            <button class="px-2 px-5 text-light bg-success rounded border border-light">Mua
-                Ngay</button>
-        </div>
-    </div>
-    <div class="row mt-5">
-        <div class="col-md-3">
-            <img src="../libs/images/111.jpg" alt="">
-        </div>
-        <div class="col-md-3">
-            <h1 class="h5 text-danger">Thông tin phòng
-            </h1>
-            <p>Phòng thoáng mát sạch sẽ,Nằm ở vị trí trung tâm tại Thành Phố Lệ Giang của Lệ Giang, chỗ
-                nghỉ này đặt quý khách ở gần các điểm thu hút</p>
-            <h3 class="h5">DỊCH VỤ</h3>
-            <p>Ghế Tình Yêu
-            </p>
-        </div>
-        <div class="col-md-3">
-            <h1 class="h5 text-danger mb-2">Đặc điểm nổi bật
-            </h1>
-            <a class="border border-danger rounded text-light bg-danger p-1 m-3">12.000.000đ
-            </a>
-            <p class="mt-3"><i
-                    class="fa-solid fa-check border rounded bg-success p-1 text-light mt-2"></i>Đặt 2
-                giờ tặng 1 giờ</p>
-        </div>
-        <div class="col-md-3">
-            <h1 class="text-danger h5">Giá Phòng</h1>
-            <p class="text-danger">12.000.000đ Đặt phòng
+            <p class="text-danger">{{i.price}} Đặt phòng
             </p>
             <button class="px-2 px-5 text-light bg-success rounded border border-light">Mua
                 Ngay</button>
@@ -156,115 +174,44 @@
     <h1 class="h1 text-primary mt-5">ĐÁNH GIÁ</h1>
     <p class="h1"> <i class="fa-solid fa-star h-1 text-warning"></i> 5/5</p>
     <div class="row">
-        <div class="col-md-6 row">
-            <div class="col-md-1 pt-3">
+        <div class="col-md-6 row" ng-repeat="i in valucomment">
+            <div class="col-md-1 pt-3" >
                 <a class="bg-primary h1 rounded-circle p-2">Q</a>
             </div>
             <div class="col-md-5 m-2">
                 <p class="h5">2022-11-17 13:32:54</p>
-                <p>Khách Sạn :</p>
-                <p>sản phẩm quá tốt
+                <p>Người Bình Luận : {{i.ten}}</p>
+                <p>{{i.content}}
                 </p>
             </div>
             <div class="col-md-5">
-                <h1 class="h5">Phòng : 18</h1>
-                <p>Đánh Giá : <i class="fa-solid fa-star  text-warning"></i> <i
-                        class="fa-solid fa-star h-1 text-warning"></i> <i
-                        class="fa-solid fa-star h-1 text-warning"></i></p>
-            </div>
-        </div>
-        <div class="col-md-6 row">
-            <div class="col-md-1 pt-3">
-                <a class="bg-primary h1 rounded-circle p-2">Q</a>
-            </div>
-            <div class="col-md-5 m-2">
-                <p class="h5">2022-11-17 13:32:54</p>
-                <p>Khách Sạn :</p>
-                <p>sản phẩm quá tốt
-                </p>
-            </div>
-            <div class="col-md-5">
-                <h1 class="h5">Phòng : 18</h1>
-                <p>Đánh Giá : <i class="fa-solid fa-star  text-warning"></i> <i
-                        class="fa-solid fa-star h-1 text-warning"></i> <i
-                        class="fa-solid fa-star h-1 text-warning"></i></p>
-            </div>
-        </div>
-        <div class="col-md-6 row">
-            <div class="col-md-1 pt-3">
-                <a class="bg-primary h1 rounded-circle p-2">Q</a>
-            </div>
-            <div class="col-md-5 m-2">
-                <p class="h5">2022-11-17 13:32:54</p>
-                <p>Khách Sạn :</p>
-                <p>sản phẩm quá tốt
-                </p>
-            </div>
-            <div class="col-md-5">
-                <h1 class="h5">Phòng : 18</h1>
-                <p>Đánh Giá : <i class="fa-solid fa-star  text-warning"></i> <i
-                        class="fa-solid fa-star h-1 text-warning"></i> <i
-                        class="fa-solid fa-star h-1 text-warning"></i></p>
-            </div>
-        </div>
-        <div class="col-md-6 row">
-            <div class="col-md-1 pt-3">
-                <a class="bg-primary h1 rounded-circle p-2">Q</a>
-            </div>
-            <div class="col-md-5 m-2">
-                <p class="h5">2022-11-17 13:32:54</p>
-                <p>Khách Sạn :</p>
-                <p>sản phẩm quá tốt
-                </p>
-            </div>
-            <div class="col-md-5">
-                <h1 class="h5">Phòng : 18</h1>
-                <p>Đánh Giá : <i class="fa-solid fa-star  text-warning"></i> <i
-                        class="fa-solid fa-star h-1 text-warning"></i> <i
-                        class="fa-solid fa-star h-1 text-warning"></i></p>
-            </div>
-        </div>
-        <div class="col-md-6 row">
-            <div class="col-md-1 pt-3">
-                <a class="bg-primary h1 rounded-circle p-2">Q</a>
-            </div>
-            <div class="col-md-5 m-2">
-                <p class="h5">2022-11-17 13:32:54</p>
-                <p>Khách Sạn :</p>
-                <p>sản phẩm quá tốt
-                </p>
-            </div>
-            <div class="col-md-5">
-                <h1 class="h5">Phòng : 18</h1>
-                <p>Đánh Giá : <i class="fa-solid fa-star  text-warning"></i> <i
-                        class="fa-solid fa-star h-1 text-warning"></i> <i
-                        class="fa-solid fa-star h-1 text-warning"></i></p>
-            </div>
-        </div>
-        <div class="col-md-6 row">
-            <div class="col-md-1 pt-3">
-                <a class="bg-primary h1 rounded-circle p-2">Q</a>
-            </div>
-            <div class="col-md-5 m-2">
-                <p class="h5">2022-11-17 13:32:54</p>
-                <p>Khách Sạn :</p>
-                <p>sản phẩm quá tốt
-                </p>
-            </div>
-            <div class="col-md-5">
-                <h1 class="h5">Phòng : 18</h1>
-                <p>Đánh Giá : <i class="fa-solid fa-star  text-warning"></i> <i
-                        class="fa-solid fa-star h-1 text-warning"></i> <i
-                        class="fa-solid fa-star h-1 text-warning"></i></p>
+                <h1 class="h5">Phòng : {{i.name}}</h1>
+                Đánh Giá : 
+                    <span ng-if="i.star == 1"><i class="fa-solid fa-star  text-warning"></i></span>
+                    <span ng-if="i.star == 2"><i class="fa-solid fa-star  text-warning"></i><i class="fa-solid fa-star  text-warning"></i></span>
+                    <span ng-if="i.star == 3"><i class="fa-solid fa-star  text-warning"></i><i class="fa-solid fa-star  text-warning"></i><i class="fa-solid fa-star  text-warning"></i></span>
+                    <span ng-if="i.star == 4"><i class="fa-solid fa-star  text-warning"></i><i class="fa-solid fa-star  text-warning"></i><i class="fa-solid fa-star  text-warning"></i><i class="fa-solid fa-star  text-warning"></i></span>
+                    <span ng-if="i.star == 5"><i class="fa-solid fa-star  text-warning"></i><i class="fa-solid fa-star  text-warning"></i><i class="fa-solid fa-star  text-warning"></i><i class="fa-solid fa-star  text-warning"></i><i class="fa-solid fa-star  text-warning"></i></span>
+                     
             </div>
         </div>
     </div>
+    <form action="">
+
+    <div class="form-floating">
+                <input type="text" class="form-control" ng-model="content" ng-style="kiemTraDuLieu.phone && {'border-color': 'red'}">
+                <label for="">Bình Luận</label>
+
+                <p ng-if="kiemTraDuLieu.content == true" class="alert alert-danger mt-3">Không Được Bỏ Trống Comment</p>
+    </div>
+</form>
+
     <div class="row">
-        <a href="" class="h1 text-dark mt-5">Xem Thêm Đánh Giá</a>
+        <a href="" class="h1 text-primary mt-5">Xem Thêm Đánh Giá</a>
         <div class="text-center mt-5">
             <p>Bạn đã sử dụng phòng chưa ?
             </p>
-            <button class=" px-5 py-2 text-light bg-primary h3 border border-light rounded">Gửi Đánh
+            <button class=" px-5 py-2 text-light bg-primary h3 border border-light rounded" ng-click="onAddComment()">Gửi Đánh
                 Giá</button>
         </div>
     </div>

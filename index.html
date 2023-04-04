@@ -18,12 +18,19 @@
     <script src="controllers/bookingController.js"></script>
     <script src="controllers/contactController.js"></script>
     <script src="controllers/listController.js"></script>
+    <script src="controllers/LoginController.js"></script>
+    <script src="controllers/LogOutController.js"></script>
+    <script src="controllers/findController.js"></script>
+    <script src="controllers/infoController.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-cookies.js">
+    </script>
     <link rel="stylesheet" href="../libs/css/style.css">
+    <link rel="stylesheet" href="../libs/css/main.css">
 </head>
 
 <body>
     <div ng-app="app-router">
-        <header class="row position-relative">
+        <header class="row position-relative" >
             <nav class="navbar  navbar-expand-lg navbar-light">
                 <div class="container-fluid d-flex">
                     <div>
@@ -73,58 +80,31 @@
                                             <a class="nav-link active text-light hover:text-danger-emphasis"
                                                 href="#!/booking">Booking</a>
                                         </li>
-                                        <li class="nav-">
-                                            <a href="">
-                                                <div id="wrapper">
-                                                    <div class="cart-tab visible">
-                                                        <a href="#" title="View your shopping cart" class="cart-link">
-                                                            <span class="amount">$22.00</span>
-                                                            <span class="contents">2 items</span>
-                                                        </a>
-                                                        <div class="cart">
-                                                            <h2>Cart</h2>
-                                                            <div class="cart-items">
-                                                                <ul>
-                                                                    <li class="clearfix">
-                                                                        <img src="../libs/images/111.jpg"
-                                                                            class="productimg">
-                                                                        <h4>Dark Hoodie</h4>
-                                                                        <span class="item-price">$11.00</span>
-                                                                        <span class="quantity">Quantity: 1</span>
-                                                                    </li>
-                                                                    <li class="clearfix">
-                                                                        <img src="../libs/images/333.jpg"
-                                                                            class="productimg">
-                                                                        <h4>SpongeBob Shoes</h4>
-                                                                        <span class="item-price">$11.00</span>
-                                                                        <span class="quantity">Quantity: 1</span>
-                                                                    </li>
-                                                                </ul>
-                                                            </div><!-- @end .cart-items -->
-                                                            <a href="#" class="checkout">Go To Checkout →</a>
-                                                        </div><!-- @end .cart -->
-                                                    </div><!-- @end .cart-tab -->
-                                            </a>
+                                        <li class="nav-item">
+                                            <a class="nav-link active text-light hover:text-danger-emphasis"
+                                                href="#!/login">login</a>
                                         </li>
+
                                         <li class="nav-item">
                                             <a class="nav-link active text-light hover:text-danger-emphasis"
                                                 href="#!/contact">Contact</a>
                                         </li>
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle active text-light hover:text-danger-emphasis"
+                                        <!-- <li class="nav-item dropdown circle" ng-show="!showlogin">
+                                            <a class="nav-link dropdown-toggle active text-light hover:text-danger-emphasis rounded-circle"
                                                 href="#" id="navbarDropdownMenuLink" role="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                                Service
+                                                <img src="./libs/images/{{user.image}}" class="w-25" alt="">
                                             </a>
+                                            <a href=""></a>
                                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                                 <li><a class="dropdown-item" href="#">Action</a></li>
-                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li><a class="dropdown-item" href="#!/info">Thông Tin Cá Nhân</a></li>
                                                 <li class="nav-item dropdown-item">
-                                                    <a class="nav-link" href="#"><i
-                                                            class="fa-solid fa-right-to-bracket"></i>Đăng Nhập</a>
+                                                    <a class="nav-link" ng-hide="active" href="#!/logout"><i
+                                                            class="fa-solid fa-right-to-bracket"></i>Thoát</a>
                                                 </li>
                                             </ul>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div>
                             </div>
@@ -245,8 +225,13 @@
     </div>
 </body>
 <script>
+
+</script>
+<script>
+  
+
     //Điều Hướng Router
-    angular.module('app-router', ['ngRoute']).config(($routeProvider) => {
+    angular.module('app-router', ['ngRoute', 'ngCookies']).config(($routeProvider) => {
         $routeProvider.when("/", {
             templateUrl: 'views/home.html',// Đường Dẫn Đến view
             controller: TrangChuController, // Đường Dẫn Đến Controller
@@ -255,7 +240,7 @@
                 templateUrl: 'views/booking.html',// Đường Dẫn Đến view
                 controller: bookingController, // Đường Dẫn Đến Controller
             })
-            .when("/detail/:userId", {
+            .when("/detail/:userId?:idcate", {
                 templateUrl: 'views/detail.html',// Đường Dẫn Đến view
                 controller: detailController, // Đường Dẫn Đến Controller
             })
@@ -266,6 +251,25 @@
             .when("/listroom", {
                 templateUrl: 'views/listroom.html',// Đường Dẫn Đến view
                 controller: listController, // Đường Dẫn Đến Controller
+            }).when("/login", {
+                templateUrl: 'views/login.html',// Đường Dẫn Đến view
+                controller: LoginController, // Đường Dẫn Đến Controller
+            })
+            .when("/logout", {
+                templateUrl: 'views/home.html',// Đường Dẫn Đến view
+                controller: LogOutController, // Đường Dẫn Đến Controller
+            })
+            .when("/find/:id", {
+                templateUrl: 'views/listroom.html',// Đường Dẫn Đến view
+                controller: findController, // Đường Dẫn Đến Controller
+            })
+            .when("/booking/:id", {
+                templateUrl: 'views/booking.html',// Đường Dẫn Đến view
+                controller: bookingController, // Đường Dẫn Đến Controller
+            })
+            .when("/info/:id", {
+                templateUrl: 'views/info.html',// Đường Dẫn Đến view
+                controller: infoController, // Đường Dẫn Đến Controller
             })
             ;
     });

@@ -1,5 +1,48 @@
-<div class="row slide1  position-absolute mb-5">
+<div class="row slide1  container-fluid position-absolute mb-5">
     <title></title>
+ <div>
+    <li class="nav-item dropdown circle ">
+        <a class="nav-link dropdown-toggle active text-light hover:text-danger-emphasis rounded-circle"
+            href="#" id="navbarDropdownMenuLink" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="./libs/images/{{user.image}}" width="100px" alt="">
+        </a>
+        <a href=""></a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#!/info/{{user.id}}">Thông Tin Cá Nhân</a></li>
+            <li class="nav-item dropdown-item">
+                <a class="nav-link" ng-hide="active" href="#!/logout"><i
+                        class="fa-solid fa-right-to-bracket"></i>Thoát</a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item">
+        <a href="">
+            <div id="wrapper">
+                <div class="cart-tab visible">
+                    <a href="#" title="View your shopping cart" class="cart-link">
+                        <span class="amount">${{card.price}}</span>
+                        <span class="contents">2 items</span>
+                    </a>
+                    <div class="cart">
+                        <h2>Cart</h2>
+                        <div class="cart-items">
+                            <ul>
+                                <li class="clearfix text-center text-dark" ng-repeat="i in card">
+                                    <img width="100px" src="../libs/images/{{i.image}}"
+                                        class="productimg">
+                                    <h4>{{i.name}}</h4>
+                                    <span class="item-price">$ {{i.price}}</span>
+                                </li>
+                            </ul>
+                        </div><!-- @end .cart-items -->
+                        <a href="#" class="checkout">Go To Checkout →</a>
+                    </div><!-- @end .cart -->
+                </div><!-- @end .cart-tab -->
+        </a>
+    </li>
+ </div>
     <div class="card-group">
         <div class="col-md-1"></div>
         <div class="col-md-4 bg-secondary text-light p-4">
@@ -25,11 +68,11 @@
     </div>
 </div>
 
-<div class="grid-container products mt-5 position-relative">
+<div class="grid-container-fluid products mt-5 position-relative">
     <div class="row">
-        <h1 class="h4 text-danger">Danh Sách Phòng</h1>
-        <div class="col-md-4 mt-5"  ng-repeat="i in luan">
-            <div class="flip-animation">
+        <h1 class="h1 text-danger p-5 mt-5">Danh Sách Phòng</h1>
+        <div class="col-md-4 mt-5"  ng-repeat="i in rooms">
+            <div class="flip-animation shadow-lg">
                 <section class="item-card row">
                     <div class="item-summary col-md-6 ">
                         <h2 class="title">{{i.name}}</h2>
@@ -49,7 +92,7 @@
                         </address>
                     </div>
                     <div class="image-wrapper">
-                        <a href="#!/detail/{{i.id}}">   <img class="featured-image" src="../libs/images/{{i.image}}"
+                        <a href="#!/detail/{{i.id}}{{i.idcate}}">   <img class="featured-image" src="../libs/images/{{i.image}}"
                             /></a>
                     </div>
                     <div class="item-time-date">
@@ -60,7 +103,7 @@
                 <section class="item-card-details">
                     <div class="item-buttons back">
                         <a class="btn-details grey back-arrow text-center"
-                            aria-label="Learn more about the band and venue" href="#!/detail/{{i.id}}">Xem Chi Tiết</a>
+                            aria-label="Learn more about the band and venue" href="#!/detail/{{i.id}}{{i.idcate}}">Xem Chi Tiết</a>
                         <a class="btn-tickets blue on-back" aria-label="Purchase tickets for this event"
                             href="#!/booking">Đặt Phòng</a>
                     </div>
@@ -107,18 +150,12 @@
             <div class="nav flex-column text-center bg-dark-subtle  nav-pills me-3  border border-secondary rounded"
                 id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <h1 class="h5 bg-danger-subtle">Danh Mục</h1>
-                <button class="nav-link active  border border-secondary" id="v-pills-home-tab"
+                <div ng-repeat="i in cate">
+                    <button class="nav-link active px-5 ms-4  border mt-3 border-secondary" id="v-pills-home-tab"
                     data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab"
-                    aria-controls="v-pills-home" aria-selected="true">Phòng Víp</button>
-                <button class="nav-link border border-secondary" id="v-pills-profile-tab"
-                    data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab"
-                    aria-controls="v-pills-profile" aria-selected="false">Phòng Thương Gia</button>
-                <button class="nav-link border border-secondary" id="v-pills-messages-tab"
-                    data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab"
-                    aria-controls="v-pills-messages" aria-selected="false">Messages</button>
-                <button class="nav-link border border-secondary" id="v-pills-settings-tab"
-                    data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab"
-                    aria-controls="v-pills-settings" aria-selected="false">Settings</button>
+                    aria-controls="v-pills-home" aria-selected="true">{{i.name}}</button>
+                </div>
+                <div></div>
             </div>
         </div>
         <div class="col-md-9">

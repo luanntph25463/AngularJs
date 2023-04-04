@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="text-center m-5">
+        <img class="rounded-circle" src="/libs/images/{{user.image}}" alt="">
+        <input type="file"
+        onchange="angular.element(this).scope().onChangeImg(event)"
+    >
+    <div><img src="{{inputs.img}}" width="200" alt=""></div>
+        <h1 class="h4 mt-3 text-secondary">{{user.name}}</h1>
+    </div>
+
+    <div class="row mb-5">
+        <div class="form-floating col-md-6">
+            <input type="text" placeholder="Tên"   ng-model="inputValue.name" ng-style="kiemTraDuLieu.name && {'border-color': 'red'}" class="form-control mt-3"
+            required="">
+            <label for="ten">Tên</label>
+        <p ng-if="kiemTraDuLieu.name == true" class="alert alert-danger mt-3">*Không Bỏ Trống Tên </p>
+        </div>
+        <div class="form-floating col-md-6">
+            <input type="text" placeholder="Tên"  ng-model="inputValue.email" ng-style="kiemTraDuLieu.email && {'border-color': 'red'}" class="form-control mt-3"
+            required="">
+            <label for="ten">Email</label>
+            <p ng-if="kiemTraDuLieu.email || kiemTraDuLieu.email1 " class="alert alert-danger rounded mt-4">{{ kiemTraDuLieu.email ? "*Không Bỏ Trống" : "*Sai định dạng" }}</p>
+        </div>
+        <div class="form-floating col-md-12 my-5">
+            <input type="text" placeholder="Tên"  ng-model="inputValue.password" ng-style="kiemTraDuLieu.password && {'border-color': 'red'}" class="form-control mt-3"
+            required="">
+            <label for="ten">PassWord</label>
+            <p ng-if="kiemTraDuLieu.password == true" class="alert alert-danger mt-3">*Không Bỏ Trống password </p>
+
+        </div>
+        <button class="btn btn-primary" ng-click="onSubmitForm()">Sửa Thông Tin</button>
+    </div>
+    <div class="row mt-5">
+        <table class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Tên</th>
+                <th>Check_in</th>
+                <th>Check_out</th>
+                <th>Quantity</th>
+                <th>phone</th>
+                <th>Giới Tính</th>
+                <th>Email</th>
+                <th>Tin Nhắn</th>
+                <th>Căn Cước Công Dân</th>
+                <th>Phương Thức Thanh Toán</th>
+                <th>Tổng Tiền Cần Thanh Toán</th>
+                <th>ID NGười Mua</th>
+                <th>Trạng Thái</th>
+                <th colspan="2" class="text-center">Action</th>
+            </tr>
+            <tr ng-repeat="ds in bookings">
+                <td>{{ds.id}}</td>
+                <td>{{ds.name}}</td>
+                <td>{{ds.check_in}}</td>
+                <td>{{ds.check_out}}</td>
+                <td>{{ds.quantity}}</td>
+                <td>{{ds.phone}}</td>
+                <td><span ng-if="ds.gender == 1">Nam</span>
+                    <span ng-if="ds.gender == 2">Nữ</span>
+                </td>
+                <td>{{ds.email}}</td>
+                <td>{{ds.message}}</td>
+                <td>{{ds.cccd}}</td>
+                <td><span ng-if="ds.payment == 1">Online</span>
+                    <span ng-if="ds.payment == 2">Offine</span>
+                </td>
+                <td>{{ds.totalamount}}</td>
+                <td>{{ds.iduser}}</td>
+                <td><span ng-if="ds.status == 1">Chờ Xác Nhận</span>
+                    <span ng-if="ds.status == 2">Đã Xác Nhận</span>
+                </td>
+                <td><button ng-click="onEdit(ds.id)" class="btn btn-success">Sửa</button></td>
+                <td><button ng-click="onDelete(ds.id)" class="btn btn-danger">Xóa</button></td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,5 +1,30 @@
 <div class="contact">
-    <div class="container">
+    <li class="nav-item">
+        <a href="">
+            <div id="wrapper">
+                <div class="cart-tab visible">
+                    <a href="#" title="View your shopping cart" class="cart-link">
+                        <span class="amount">${{card.price}}</span>
+                        <span class="contents">2 items</span>
+                    </a>
+                    <div class="cart">
+                        <h2>Cart</h2>
+                        <div class="cart-items">
+                            <ul>
+                                <li class="clearfix text-center text-dark" ng-repeat="i in card">
+                                    <img width="100px" src="../libs/images/{{i.image}}"
+                                        class="productimg">
+                                    <h4>{{i.name}}</h4>
+                                    <span class="item-price">$ {{i.price}}</span>
+                                </li>
+                            </ul>
+                        </div><!-- @end .cart-items -->
+                        <a href="#" class="checkout">Go To Checkout →</a>
+                    </div><!-- @end .cart -->
+                </div><!-- @end .cart-tab -->
+        </a>
+    </li>
+    <div class="container-fluid">
         <h2 class="tittle-one">VIEW ON MAP</h2>
         <div class="map ratio ratio-16x9">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.863981046053!2d105.74459305058991!3d21.038127785924527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b991d80fd5%3A0x53cefc99d6b0bf6f!2sFPT%20Polytechnic%20Hanoi!5e0!3m2!1sen!2s!4v1678823960658!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -18,22 +43,34 @@
         </div>
         <div class="contact-form">
             <h3 class="tittle">CONTACT FORM</h3>
-            <form class="form-group row">
-                <div class="col-md-4">
-                    <input type="text" class="form-control" placeholder="Name">
+            <form class="form-group row form-floating">
+                <div class="col-md-4 form-floating">
+                    <input type="text" class="form-control" ng-model="inputValue.name" ng-style="kiemTraDuLieu.name && {'border-color': 'red'}" placeholder="Name">
+                    <p ng-if="kiemTraDuLieu.name == true" class="alert alert-danger mt-3">Vui Lòng Chọn Số Người ở</p>
+                    <label for="">Tên</label>
+
                 </div>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" placeholder="Name">
+                <div class="col-md-4 form-floating">
+                    <input type="text" ng-model="inputValue.email" class="form-control" ng-style="kiemTraDuLieu.email && {'border-color': 'red'}"  placeholder="email">
+                    <p ng-if="kiemTraDuLieu.email || kiemTraDuLieu.email1 " class="alert alert-danger rounded mt-4">{{ kiemTraDuLieu.email ? "*Không Bỏ Trống" : "*Sai định dạng" }}</p>
+                    <label for="">Email</label>
+                    
+
                 </div>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" placeholder="Name">
+                <div class="col-md-4 form-floating">
+                    <input type="text" class="form-control"ng-model="inputValue.phone" ng-style="kiemTraDuLieu.phone && {'border-color': 'red'}" placeholder="Name">
+                    <p ng-if="kiemTraDuLieu.phone || kiemTraDuLieu.phone1 " class="alert alert-danger rounded mt-4">{{ kiemTraDuLieu.phone ? "*Hãy nhập Số Điện Thoại" : "*Sai định dạng Số Điện Thoại" }}</p>
+                    <label for="">Phone</label>
+
                 </div>
-                <div class="col-md-12 mt-4">
-                    <textarea class="form-control" placeholder="Message"></textarea>
+                <div class="col-md-12 mt-4 form-floating">
+                    <textarea class="form-control" ng-style="kiemTraDuLieu.message && {'border-color': 'red'}" ng-model="inputValue.message"></textarea>
+                    <p ng-if="kiemTraDuLieu.message == true" class="alert alert-danger mt-3">Vui Lòng Chọn Số Người ở</p>
+                    <label for="">Message</label>
                 </div>
                 <div class="clearfix"> </div>
       
-                <button type="submit" class="btn btn-danger  mt-5" value="SEND">Send</button>
+                <button type="submit" class="btn btn-danger  mt-5" ng-click="onSubmitForm()">Send</button>
             </form>
         </div>
     </div>
